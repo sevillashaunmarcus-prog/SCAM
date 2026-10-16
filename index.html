@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Will You Go Out With Me? 💕</title>
+    
+    <!-- SEO & Social Sharing Meta Tags -->
+    <meta name="description" content="A cute retro pixel-art interactive date invitation and love letter.">
+    <meta name="theme-color" content="#ffeef3">
+    
+    <!-- Pixel Game Stylesheets -->
+    <link rel="stylesheet" href="css/pixel-base.css">
+    <link rel="stylesheet" href="css/pixel-components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Favicon (Pixel Heart) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>💖</text></svg>">
+</head>
+<body>
+
+    <!-- Pixel Screen Curtain for Transitions -->
+    <div id="pixel-curtain" class="pixel-curtain-transition"></div>
+
+    <!-- Main Game Frame Wrapper -->
+    <main class="game-wrapper">
+
+        <!-- Top HUD Status Bar -->
+        <header class="game-hud" role="banner">
+            <div id="hud-step-badge" class="hud-step-badge">
+                <img src="assets/stickers/pixel-heart.svg" class="hud-mini-icon" alt="" aria-hidden="true">
+                <span>START 💕</span>
+            </div>
+            <button id="sound-toggle-btn" class="hud-sound-btn" type="button" aria-label="Toggle retro sound" title="Toggle Sound">🔊</button>
+        </header>
+
+        <!-- Progress Indicator (Hidden on Landing & Final) -->
+        <div id="progress-container" class="pixel-progress-container" style="display: none;" aria-label="Date planning progress">
+            <div class="pixel-progress-hearts">
+                <span class="progress-heart" data-step="1">🤍</span>
+                <span>━</span>
+                <span class="progress-heart" data-step="2">🤍</span>
+                <span>━</span>
+                <span class="progress-heart" data-step="3">🤍</span>
+                <span>━</span>
+                <span class="progress-heart" data-step="4">🤍</span>
+                <span>━</span>
+                <span class="progress-heart" data-step="5">🤍</span>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             PAGE 0: LANDING SCREEN ("Will you go out with me? 💕")
+             ==================================================================== -->
+        <section id="step-0" class="page-step active" aria-labelledby="landing-title">
+            <article id="landing-card" class="pixel-card">
+                <!-- Window titlebar -->
+                <div class="card-window-bar">
+                    <span class="card-window-title">💌 DATE_INVITATION.EXE</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <!-- Reusable Image / GIF Placeholder Area -->
+                <div class="pixel-media-box">
+                    <img src="assets/images/landing-couple.svg" alt="Cute pixel couple animation" id="landing-gif">
+                    <div class="media-placeholder-view">
+                        <span class="placeholder-icon">🧸</span>
+                        <span class="placeholder-label">[ COUPLE GIF HERE ]</span>
+                        <span class="placeholder-path">assets/images/landing-couple.svg</span>
+                    </div>
+                </div>
+
+                <!-- Main Prompt Title -->
+                <h1 id="landing-title" class="pixel-title">Will you go out with me? 💕</h1>
+                <p class="pixel-subtitle">A special question just for you...</p>
+
+                <!-- Speech Bubble for funny NO button clicks -->
+                <div id="no-quote-box" class="no-quote-bubble" style="display: none;"></div>
+
+                <!-- Action Buttons: YES ❤️ and NO 💔 -->
+                <div class="landing-actions-container">
+                    <div class="landing-buttons-row">
+                        <button id="btn-yes" class="pixel-btn pixel-btn-yes" type="button">
+                            YES ❤️
+                        </button>
+                        <button id="btn-no" class="pixel-btn pixel-btn-no" type="button">
+                            NO 💔
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 1: PICK A DATE & TIME
+             ==================================================================== -->
+        <section id="step-1" class="page-step" aria-labelledby="datetime-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">📅 STEP 1: DATE & TIME</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <!-- Reusable GIF / Image Container -->
+                <div class="pixel-media-box">
+                    <img src="assets/images/date-animation.svg" alt="Planning our date" id="date-gif">
+                    <div class="media-placeholder-view">
+                        <span class="placeholder-icon">📅</span>
+                        <span class="placeholder-label">[ DATE ANIMATION GIF ]</span>
+                        <span class="placeholder-path">assets/images/date-animation.svg</span>
+                    </div>
+                </div>
+
+                <h2 id="datetime-title" class="pixel-title">Okay! Let's plan our date. 🥰</h2>
+                <p class="pixel-subtitle">Pick the day and time you're free!</p>
+
+                <!-- Date Picker -->
+                <div class="pixel-input-group">
+                    <label for="date-input" class="pixel-input-label">📅 PICK A DATE:</label>
+                    <input type="date" id="date-input" class="pixel-input">
+                    <!-- Quick Date Chips -->
+                    <div class="quick-date-chips">
+                        <button type="button" class="quick-chip" data-days="0">Today ✨</button>
+                        <button type="button" class="quick-chip" data-days="1">Tomorrow 🌸</button>
+                        <button type="button" class="quick-chip" data-days="2">This Weekend 💖</button>
+                        <button type="button" class="quick-chip" data-days="7">Next Week 💌</button>
+                    </div>
+                </div>
+
+                <!-- Time Picker -->
+                <div class="pixel-input-group">
+                    <label for="time-input" class="pixel-input-label">⏰ PICK A TIME:</label>
+                    <input type="time" id="time-input" class="pixel-input" value="17:30">
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons-row">
+                    <button id="btn-back-step-2" class="pixel-btn pixel-btn-nav pixel-btn-back" type="button">← BACK</button>
+                    <button id="btn-next-step-2" class="pixel-btn pixel-btn-nav pixel-btn-next" type="button">NEXT →</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 2: WHAT KIND OF DATE?
+             ==================================================================== -->
+        <section id="step-2" class="page-step" aria-labelledby="activity-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">🎬 STEP 2: DATE TYPE</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <h2 id="activity-title" class="pixel-title">What kind of date would you like? 💕</h2>
+                <p class="pixel-subtitle">Choose the vibe for our hangout!</p>
+
+                <!-- Selectable Cards Grid (2x2 Balanced Layout) -->
+                <div class="pixel-cards-grid" role="radiogroup" aria-label="Select date activity">
+                    <div class="selectable-pixel-card activity-card" data-value="Romantic Dinner" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍽️</span>
+                        <span class="card-item-title">Dinner</span>
+                        <span class="card-item-desc">Cozy dinner & sweet talks</span>
+                    </div>
+
+                    <div class="selectable-pixel-card activity-card" data-value="Cute Cafe Date" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">☕</span>
+                        <span class="card-item-title">Coffee</span>
+                        <span class="card-item-desc">Cute cafe & matcha lattes</span>
+                    </div>
+
+                    <div class="selectable-pixel-card activity-card" data-value="City Night Out" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🌆</span>
+                        <span class="card-item-title">Night Out</span>
+                        <span class="card-item-desc">City lights & late stroll</span>
+                    </div>
+
+                    <div class="selectable-pixel-card activity-card" data-value="Outdoor Picnic & Adventure" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🌳</span>
+                        <span class="card-item-title">Outdoor Date</span>
+                        <span class="card-item-desc">Picnic in the park</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons-row">
+                    <button id="btn-back-step-3" class="pixel-btn pixel-btn-nav pixel-btn-back" type="button">← BACK</button>
+                    <button id="btn-next-step-3" class="pixel-btn pixel-btn-nav pixel-btn-next" type="button">NEXT →</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 3: WHAT FOOD?
+             ==================================================================== -->
+        <section id="step-3" class="page-step" aria-labelledby="food-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">🍴 STEP 3: FOOD SELECTION</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <h2 id="food-title" class="pixel-title">What would you like to eat? 🍴</h2>
+                <p class="pixel-subtitle">Pick whatever your tummy craves! 😋</p>
+
+                <!-- Food Selection Grid -->
+                <div class="pixel-cards-grid food-grid" role="radiogroup" aria-label="Select food options">
+                    <div class="selectable-pixel-card food-card" data-value="Pizza 🍕" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍕</span>
+                        <span class="card-item-title">Pizza</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card" data-value="Pasta 🍝" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍝</span>
+                        <span class="card-item-title">Pasta</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card" data-value="Burgers 🍔" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍔</span>
+                        <span class="card-item-title">Burgers</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card" data-value="Japanese 🍣" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍣</span>
+                        <span class="card-item-title">Japanese</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card" data-value="Chicken 🍗" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍗</span>
+                        <span class="card-item-title">Chicken</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card" data-value="Desserts & Sweets 🍰" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">🍰</span>
+                        <span class="card-item-title">Desserts</span>
+                    </div>
+
+                    <div class="selectable-pixel-card food-card card-other" data-value="Other" role="radio" aria-checked="false" tabindex="0">
+                        <span class="card-emoji-icon">✏️</span>
+                        <span class="card-item-title">Other</span>
+                    </div>
+                </div>
+
+                <!-- Custom Food Input when "Other" is chosen -->
+                <div id="other-food-container" class="other-food-container" style="display: none;">
+                    <label for="food-other-input" class="pixel-input-label">✏️ TYPE YOUR CRAVING:</label>
+                    <input type="text" id="food-other-input" class="pixel-input" placeholder="e.g. Samgyupsal, Ramen, Tacos...">
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons-row">
+                    <button id="btn-back-step-4" class="pixel-btn pixel-btn-nav pixel-btn-back" type="button">← BACK</button>
+                    <button id="btn-next-step-4" class="pixel-btn pixel-btn-nav pixel-btn-next" type="button">NEXT →</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 4: WHAT COLOR SHOULD WE WEAR?
+             ==================================================================== -->
+        <section id="step-4" class="page-step" aria-labelledby="outfit-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">👕 STEP 4: OUTFIT COLOR</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <h2 id="outfit-title" class="pixel-title">What color should we wear? 👕💕</h2>
+                <p class="pixel-subtitle">Let's coordinate our matching fits! ✨</p>
+
+                <div class="color-picker-section">
+                    <!-- Live Pixel Outfit SVG Preview -->
+                    <div class="outfit-character-preview" aria-live="polite">
+                        <svg class="pixel-outfit-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Retro Pixel Shirt Art -->
+                            <!-- Collar / Neck -->
+                            <rect x="42" y="10" width="16" height="12" fill="#ffe0bd" stroke="#381a2e" stroke-width="3" />
+                            <!-- Shirt Body -->
+                            <path id="outfit-shirt-path" d="M30 22 H70 L86 42 L72 52 L68 36 V88 H32 V36 L28 52 L14 42 Z" fill="#ffb6c1" stroke="#381a2e" stroke-width="4" stroke-linejoin="round" />
+                            <!-- Small pixel heart pocket -->
+                            <path d="M47 38 L50 34 L53 38 L50 42 Z" fill="#ff476f" />
+                        </svg>
+                        <div id="outfit-color-name" class="outfit-color-name-badge">Pastel Pink</div>
+                    </div>
+
+                    <!-- Preset Palette Swatches -->
+                    <div class="color-swatches-grid" role="radiogroup" aria-label="Select outfit color">
+                        <button type="button" class="color-swatch-btn selected" data-color="#ffb6c1" data-name="Pastel Pink" style="background: #ffb6c1;" title="Pastel Pink"></button>
+                        <button type="button" class="color-swatch-btn" data-color="#d8b4fe" data-name="Lavender" style="background: #d8b4fe;" title="Lavender"></button>
+                        <button type="button" class="color-swatch-btn" data-color="#93c5fd" data-name="Baby Blue" style="background: #93c5fd;" title="Baby Blue"></button>
+                        <button type="button" class="color-swatch-btn" data-color="#86efac" data-name="Matcha Green" style="background: #86efac;" title="Matcha Green"></button>
+                        <button type="button" class="color-swatch-btn color-swatch-other" data-color="#fbcfe8" data-name="Other" title="Other">
+                            <span class="swatch-other-text">✏️ Other</span>
+                        </button>
+                        <button type="button" class="color-swatch-btn" data-color="#1f2937" data-name="Classy Black" style="background: #1f2937;" title="Classy Black"></button>
+                        <button type="button" class="color-swatch-btn" data-color="#f8fafc" data-name="Pure White" style="background: #f8fafc;" title="Pure White"></button>
+                        <button type="button" class="color-swatch-btn" data-color="#fca5a5" data-name="Sunset Coral" style="background: #fca5a5;" title="Sunset Coral"></button>
+                    </div>
+
+                    <!-- Custom Outfit Input when "Other" is chosen -->
+                    <div id="other-outfit-container" class="other-outfit-container" style="display: none;">
+                        <label for="outfit-other-input" class="pixel-input-label">✏️ TYPE YOUR COLOR / OUTFIT IDEA:</label>
+                        <input type="text" id="outfit-other-input" class="pixel-input" placeholder="e.g. Navy Blue, Beige, Earth Tones, All Black...">
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons-row">
+                    <button id="btn-back-step-5" class="pixel-btn pixel-btn-nav pixel-btn-back" type="button">← BACK</button>
+                    <button id="btn-next-step-5" class="pixel-btn pixel-btn-nav pixel-btn-next" type="button">NEXT →</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 5: WHERE SHOULD I PICK YOU UP?
+             ==================================================================== -->
+        <section id="step-5" class="page-step" aria-labelledby="pickup-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">🚗 STEP 5: PICKUP LOCATION</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <!-- Reusable GIF / Image Container -->
+                <div class="pixel-media-box">
+                    <img src="assets/images/pickup-animation.svg" alt="Pickup ride" id="pickup-gif">
+                    <div class="media-placeholder-view">
+                        <span class="placeholder-icon">🚗</span>
+                        <span class="placeholder-label">[ CAR / PICKUP GIF HERE ]</span>
+                        <span class="placeholder-path">assets/images/pickup-animation.svg</span>
+                    </div>
+                </div>
+
+                <h2 id="pickup-title" class="pixel-title">Where should I pick you up? 🚗💕</h2>
+                
+                <div class="pixel-input-group">
+                    <label for="pickup-input" class="pixel-input-label">📍 YOUR PICKUP LOCATION:</label>
+                    <input type="text" id="pickup-input" class="pixel-input" placeholder="Type your pickup address or location..." value="Your House ❤️">
+                </div>
+
+                <!-- Cute Helper Banner -->
+                <div class="pickup-cute-helper">
+                    <span style="font-size: 24px;">🥺</span>
+                    <span>Don't worry, I'll come get you. Just be ready to have fun!</span>
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons-row">
+                    <button id="btn-back-step-6" class="pixel-btn pixel-btn-nav pixel-btn-back" type="button">← BACK</button>
+                    <button id="btn-finish" class="pixel-btn pixel-btn-nav pixel-btn-finish" type="button">FINISH 💕</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- ====================================================================
+             PAGE 6: FINAL SCREEN (OUR DATE DETAILS 💕)
+             ==================================================================== -->
+        <section id="step-6" class="page-step" aria-labelledby="final-title">
+            <article class="pixel-card">
+                <div class="card-window-bar">
+                    <span class="card-window-title">🏆 DATE CONFIRMED!</span>
+                    <div class="card-window-dots">
+                        <span class="card-dot dot-yellow"></span>
+                        <span class="card-dot dot-mint"></span>
+                        <span class="card-dot dot-hotpink"></span>
+                    </div>
+                </div>
+
+                <!-- Victory Banner -->
+                <div class="victory-ribbon">
+                    QUEST COMPLETE: DATE IS SET! 💕
+                </div>
+
+                <h2 id="final-title" class="pixel-title">OUR DATE DETAILS 💕</h2>
+
+                <!-- 1. Her Choices Section -->
+                <div class="summary-details-card">
+                    <div class="summary-card-header">
+                        <h3 class="summary-section-title">🌸 YOUR CHOICES 💕</h3>
+                        <button id="btn-copy-her-box" class="pixel-btn-mini-copy" type="button" title="Copy Your Choices">📋 COPY</button>
+                    </div>
+                    <ul class="summary-list">
+                        <li class="summary-item">
+                            <span class="summary-icon">📅</span>
+                            <span class="summary-label">Date:</span>
+                            <span id="her-summary-date" class="summary-value">Loading...</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">⏰</span>
+                            <span class="summary-label">Time:</span>
+                            <span id="her-summary-time" class="summary-value">Loading...</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🎬</span>
+                            <span class="summary-label">Date Type:</span>
+                            <span id="her-summary-activity" class="summary-value">Loading...</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🍴</span>
+                            <span class="summary-label">Food:</span>
+                            <span id="her-summary-food" class="summary-value">Loading...</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">👕</span>
+                            <span class="summary-label">Outf&zwnj;it Color:</span>
+                            <span id="her-summary-outfit" class="summary-value">Loading...</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🚗</span>
+                            <span class="summary-label">Pickup:</span>
+                            <span id="her-summary-pickup" class="summary-value">Loading...</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. What I Planned For Us (Loaded from FINAL_DATE_PLAN config) -->
+                <div class="plan-official-box">
+                    <div class="summary-card-header">
+                        <h3 class="summary-section-title">💖 BUT HERE'S WHAT I PLANNED FOR US... 💕</h3>
+                        <button id="btn-copy-my-box" class="pixel-btn-mini-copy" type="button" title="Copy What I Planned">📋 COPY</button>
+                    </div>
+                    <ul class="summary-list">
+                        <li class="summary-item">
+                            <span class="summary-icon">📅</span>
+                            <span class="summary-label">Date:</span>
+                            <span id="my-plan-date" class="summary-value">--</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">⏰</span>
+                            <span class="summary-label">Time:</span>
+                            <span id="my-plan-time" class="summary-value">--</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🎬</span>
+                            <span class="summary-label">Activity:</span>
+                            <span id="my-plan-activity" class="summary-value">--</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🍝</span>
+                            <span class="summary-label">Food:</span>
+                            <span id="my-plan-food" class="summary-value">--</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">👕</span>
+                            <span class="summary-label">Outf&zwnj;it Color:</span>
+                            <span id="my-plan-outfit" class="summary-value">--</span>
+                        </li>
+                        <li class="summary-item">
+                            <span class="summary-icon">🚗</span>
+                            <span class="summary-label">Pickup:</span>
+                            <span id="my-plan-pickup" class="summary-value">--</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sweet Message -->
+                <p id="final-special-message" class="sweet-love-note">
+                    "I can't wait to spend some time with you. Ganda! ❤️"
+                </p>
+
+                <!-- Final GIF Placeholder -->
+                <div class="pixel-media-box">
+                    <img src="assets/images/final-couple.svg" alt="Final couple happy animation" id="final-gif">
+                    <div class="media-placeholder-view">
+                        <span class="placeholder-icon">💖</span>
+                        <span class="placeholder-label">[ FINAL COUPLE GIF HERE ]</span>
+                        <span class="placeholder-path">assets/images/final-couple.svg</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons: Copy Plan & Edit -->
+                <div class="final-action-buttons">
+                    <button id="btn-copy-her-plan" class="pixel-btn btn-copy-her" type="button">📋 COPY YOUR CHOICES 🌸</button>
+                    <button id="btn-copy-my-plan" class="pixel-btn btn-copy-my" type="button">📋 COPY WHAT I PLANNED 💖</button>
+                    <button id="btn-edit-choices" class="pixel-btn btn-restart" type="button">✏️ EDIT CHOICES</button>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- Scripts in proper dependency order -->
+    <script src="js/config.js"></script>
+    <script src="js/sound.js"></script>
+    <script src="js/pixel-effects.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

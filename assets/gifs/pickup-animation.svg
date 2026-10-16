@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      @keyframes roadScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-32px); }
+      }
+      @keyframes carBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      @keyframes wheelSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes smokePuff {
+        0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translate(-36px, -18px) scale(1.4); opacity: 0; }
+      }
+      @keyframes bearWave {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(15deg) translateY(-2px); }
+      }
+      @keyframes starBlink {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+
+      .car-group {
+        animation: carBounce 0.8s infinite ease-in-out;
+      }
+      .road-dashes {
+        animation: roadScroll 0.5s linear infinite;
+      }
+      .wheel-l {
+        transform-origin: 66px 114px;
+        animation: wheelSpin 0.6s linear infinite;
+      }
+      .wheel-r {
+        transform-origin: 136px 114px;
+        animation: wheelSpin 0.6s linear infinite;
+      }
+      .exhaust-heart-1 {
+        transform-origin: 40px 104px;
+        animation: smokePuff 1.8s infinite ease-out;
+      }
+      .exhaust-heart-2 {
+        transform-origin: 40px 104px;
+        animation: smokePuff 1.8s infinite ease-out 0.9s;
+      }
+      .waving-bear {
+        transform-origin: 110px 80px;
+        animation: bearWave 1.2s infinite ease-in-out;
+      }
+      .star-1 { animation: starBlink 2s infinite ease-in-out; }
+      .star-2 { animation: starBlink 2.4s infinite ease-in-out 0.8s; }
+      .star-3 { animation: starBlink 1.8s infinite ease-in-out 1.2s; }
+    </style>
+  </defs>
+
+  <!-- Sky Canvas -->
+  
+  
+
+  <!-- Twinkling Stars in Night Sky -->
+  <g fill="#ffe066">
+    <g class="star-1"><rect x="25" y="22" width="4" height="4"/><rect x="23" y="24" width="8" height="2"/><rect x="25" y="26" width="4" height="4"/></g>
+    <g class="star-2"><rect x="95" y="18" width="4" height="4"/><rect x="93" y="20" width="8" height="2"/><rect x="95" y="22" width="4" height="4"/></g>
+    <g class="star-3"><rect x="165" y="26" width="4" height="4"/><rect x="163" y="28" width="8" height="2"/><rect x="165" y="30" width="4" height="4"/></g>
+    <rect x="55" y="35" width="2" height="2" fill="#ffb8c8"/>
+    <rect x="135" y="40" width="2" height="2" fill="#ffb8c8"/>
+  </g>
+
+  <!-- Floating Platform Road at bottom -->
+  <rect x="12" y="120" width="176" height="20" rx="4" fill="#381a2e"/>
+  <rect x="12" y="120" width="176" height="2" fill="#ffb8c8"/>
+
+  <!-- Moving Road Dashes -->
+  <g class="road-dashes" fill="#ffe066">
+    <rect x="16" y="128" width="14" height="3"/>
+    <rect x="44" y="128" width="14" height="3"/>
+    <rect x="72" y="128" width="14" height="3"/>
+    <rect x="100" y="128" width="14" height="3"/>
+    <rect x="128" y="128" width="14" height="3"/>
+    <rect x="156" y="128" width="14" height="3"/>
+    <rect x="184" y="128" width="14" height="3"/>
+  </g>
+
+  <!-- Exhaust Heart Puffs -->
+  <g class="exhaust-heart-1">
+    <path fill="#ff8da3" d="M38 102 h2 v2 h-2z M42 102 h2 v2 h-2z M37 104 h8 v2 h-8z M38 106 h6 v2 h-6z M40 108 h2 v2 h-2z"/>
+  </g>
+  <g class="exhaust-heart-2">
+    <path fill="#ffb8c8" d="M38 102 h2 v2 h-2z M42 102 h2 v2 h-2z M37 104 h8 v2 h-8z M38 106 h6 v2 h-6z M40 108 h2 v2 h-2z"/>
+  </g>
+
+  <!-- ================= BOUNCING CAR ================= -->
+  <g class="car-group">
+    <!-- Ground Shadow Under Car -->
+    <rect x="42" y="116" width="120" height="4" fill="#200d1a"/>
+
+    <!-- Bears inside car -->
+    <!-- White Bear (Driving) -->
+    <rect x="74" y="60" width="22" height="20" fill="#381a2e"/>
+    <rect x="76" y="62" width="18" height="16" fill="#ffffff"/>
+    <!-- Ear -->
+    <rect x="72" y="56" width="6" height="6" fill="#381a2e"/>
+    <rect x="74" y="58" width="2" height="2" fill="#ffb8c8"/>
+    <!-- Face -->
+    <rect x="86" y="68" width="3" height="4" fill="#381a2e"/>
+    <rect x="88" y="72" width="3" height="2" fill="#ff9ebb"/>
+
+    <!-- Mocha Bear (Waving Passenger) -->
+    <g class="waving-bear">
+      <rect x="100" y="58" width="22" height="20" fill="#381a2e"/>
+      <rect x="102" y="60" width="18" height="16" fill="#e8be99"/>
+      <!-- Ear -->
+      <rect x="116" y="54" width="6" height="6" fill="#381a2e"/>
+      <rect x="118" y="56" width="2" height="2" fill="#d49b72"/>
+      <!-- Happy Eye & Blush -->
+      <rect x="108" y="66" width="3" height="2" fill="#381a2e"/>
+      <rect x="108" y="70" width="4" height="2" fill="#ff9ebb"/>
+      <!-- Waving Paw -->
+      <rect x="122" y="60" width="6" height="6" fill="#381a2e"/>
+      <rect x="122" y="62" width="4" height="4" fill="#e8be99"/>
+    </g>
+
+    <!-- Windshield Glass -->
+    <polygon points="128,82 144,82 136,66 124,66" fill="#d4f1ff" stroke="#381a2e" stroke-width="2"/>
+    <line x1="128" y1="68" x2="136" y2="80" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Retro Convertible Car Body -->
+    <!-- Outline -->
+    <path fill="#381a2e" d="
+      M44 86 h80 l16 -12 h16 l12 12 h8 v26 h-132 z
+    "/>
+    <!-- Pink Body Fill -->
+    <path fill="#ff476f" d="
+      M48 90 h76 l14 -10 h16 l10 10 h8 v20 h-124 z
+    "/>
+    <!-- Cute Side Stripe -->
+    <rect x="48" y="98" width="124" height="4" fill="#ffffff"/>
+
+    <!-- Headlight Beam (Glowing Yellow) -->
+    <polygon points="172,94 198,84 198,114 172,104" fill="#ffe066" opacity="0.45"/>
+    <rect x="168" y="94" width="4" height="8" fill="#ffe066"/>
+    <!-- Tail Light (Red) -->
+    <rect x="46" y="92" width="4" height="6" fill="#ff0044"/>
+
+    <!-- Cute Heart Emblem on Car Door -->
+    <path fill="#ffffff" d="M96 100 h2 v1 h-2z M100 100 h2 v1 h-2z M95 101 h8 v2 h-8z M96 103 h6 v1 h-6z M98 104 h2 v1 h-2z"/>
+
+    <!-- Left Wheel -->
+    <g class="wheel-l">
+      <circle cx="66" cy="114" r="14" fill="#381a2e"/>
+      <circle cx="66" cy="114" r="9" fill="#e2e8f0"/>
+      <!-- Rim spokes -->
+      <line x1="66" y1="105" x2="66" y2="123" stroke="#381a2e" stroke-width="2"/>
+      <line x1="57" y1="114" x2="75" y2="114" stroke="#381a2e" stroke-width="2"/>
+      <circle cx="66" cy="114" r="3" fill="#ff476f"/>
+    </g>
+
+    <!-- Right Wheel -->
+    <g class="wheel-r">
+      <circle cx="136" cy="114" r="14" fill="#381a2e"/>
+      <circle cx="136" cy="114" r="9" fill="#e2e8f0"/>
+      <line x1="136" y1="105" x2="136" y2="123" stroke="#381a2e" stroke-width="2"/>
+      <line x1="127" y1="114" x2="145" y2="114" stroke="#381a2e" stroke-width="2"/>
+      <circle cx="136" cy="114" r="3" fill="#ff476f"/>
+    </g>
+  </g>
+</svg>

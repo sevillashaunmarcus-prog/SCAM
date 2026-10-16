@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      @keyframes tickClock {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(90deg); }
+        50% { transform: rotate(180deg); }
+        75% { transform: rotate(270deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pawWave {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-18deg) translateY(-2px); }
+      }
+      @keyframes heartBeatSmall {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+      @keyframes noteFloat {
+        0% { transform: translateY(0) scale(0.8); opacity: 0; }
+        30% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translateY(-22px) translateX(6px) scale(1.1); opacity: 0; }
+      }
+      .clock-hand {
+        transform-origin: 140px 65px;
+        animation: tickClock 4s steps(4) infinite;
+      }
+      .waving-paw {
+        transform-origin: 104px 105px;
+        animation: pawWave 1.4s infinite ease-in-out;
+      }
+      .stamped-heart {
+        transform-origin: 66px 82px;
+        animation: heartBeatSmall 1.5s infinite ease-in-out;
+      }
+      .music-note {
+        animation: noteFloat 2.8s infinite ease-out;
+      }
+    </style>
+  </defs>
+
+  
+  
+
+  <!-- Background Dots -->
+  <g fill="#ffdbe6">
+    <rect x="30" y="24" width="4" height="4"/>
+    <rect x="170" y="28" width="4" height="4"/>
+    <rect x="25" y="110" width="4" height="4"/>
+    <rect x="175" y="105" width="4" height="4"/>
+  </g>
+
+  <!-- Shadows -->
+  <rect x="36" y="116" width="62" height="6" fill="#ffd1de" rx="3"/>
+  <rect x="114" y="116" width="54" height="6" fill="#ffd1de" rx="3"/>
+
+  <!-- ================= RETRO CALENDAR ================= -->
+  <!-- Outline -->
+  <rect x="34" y="40" width="64" height="74" fill="#381a2e"/>
+  <!-- Page White -->
+  <rect x="38" y="44" width="56" height="66" fill="#ffffff"/>
+  <!-- Red/Pink Top Bar -->
+  <rect x="38" y="44" width="56" height="16" fill="#ff476f"/>
+
+  <!-- Binding Rings -->
+  <rect x="46" y="36" width="4" height="8" fill="#381a2e"/>
+  <rect x="64" y="36" width="4" height="8" fill="#381a2e"/>
+  <rect x="82" y="36" width="4" height="8" fill="#381a2e"/>
+
+  <!-- Calendar Grid Lines -->
+  <g fill="#e2e8f0">
+    <rect x="44" y="66" width="8" height="6"/>
+    <rect x="58" y="66" width="8" height="6"/>
+    <rect x="72" y="66" width="8" height="6"/>
+
+    <rect x="44" y="76" width="8" height="6"/>
+    <rect x="72" y="76" width="8" height="6"/>
+
+    <rect x="44" y="86" width="8" height="6"/>
+    <rect x="58" y="86" width="8" height="6"/>
+    <rect x="72" y="86" width="8" height="6"/>
+
+    <rect x="44" y="96" width="8" height="6"/>
+    <rect x="58" y="96" width="8" height="6"/>
+  </g>
+
+  <!-- Heart on the special date! -->
+  <g class="stamped-heart">
+    <path fill="#ff476f" d="
+      M62 76 h3 v2 h-3z
+      M67 76 h3 v2 h-3z
+      M60 78 h12 v3 h-12z
+      M62 81 h8 v2 h-8z
+      M64 83 h4 v2 h-4z
+      M65 85 h2 v2 h-2z
+    "/>
+  </g>
+
+  <!-- ================= RETRO CLOCK ================= -->
+  <!-- Clock Body Outline -->
+  <circle cx="140" cy="65" r="26" fill="#381a2e"/>
+  <!-- Clock Face -->
+  <circle cx="140" cy="65" r="22" fill="#fff9e6"/>
+
+  <!-- Bell tops -->
+  <rect x="122" y="36" width="8" height="6" fill="#381a2e"/>
+  <rect x="150" y="36" width="8" height="6" fill="#381a2e"/>
+  <!-- Feet -->
+  <rect x="124" y="88" width="6" height="6" fill="#381a2e"/>
+  <rect x="150" y="88" width="6" height="6" fill="#381a2e"/>
+
+  <!-- Clock Hour markers -->
+  <rect x="139" y="47" width="2" height="4" fill="#381a2e"/>
+  <rect x="139" y="79" width="2" height="4" fill="#381a2e"/>
+  <rect x="122" y="64" width="4" height="2" fill="#381a2e"/>
+  <rect x="154" y="64" width="4" height="2" fill="#381a2e"/>
+
+  <!-- Rotating Clock Hand -->
+  <g class="clock-hand">
+    <rect x="139" y="52" width="2" height="13" fill="#381a2e"/>
+    <rect x="140" y="64" width="8" height="2" fill="#ff476f"/>
+    <circle cx="140" cy="65" r="3" fill="#ff476f"/>
+  </g>
+
+  <!-- ================= PEEKING BEAR & WAVING PAW ================= -->
+  <!-- Head -->
+  <rect x="108" y="76" width="34" height="28" fill="#381a2e"/>
+  <rect x="112" y="80" width="26" height="20" fill="#ffffff"/>
+  <!-- Ear -->
+  <rect x="128" y="70" width="10" height="8" fill="#381a2e"/>
+  <rect x="130" y="72" width="6" height="4" fill="#ffb8c8"/>
+  <!-- Eyes & Cheeks -->
+  <rect x="116" y="86" width="3" height="4" fill="#381a2e"/>
+  <rect x="126" y="86" width="3" height="4" fill="#381a2e"/>
+  <rect x="114" y="92" width="5" height="4" fill="#ff9ebb"/>
+  <rect x="126" y="92" width="5" height="4" fill="#ff9ebb"/>
+  <rect x="121" y="90" width="3" height="2" fill="#381a2e"/>
+
+  <!-- Waving Paw -->
+  <g class="waving-paw">
+    <rect x="98" y="96" width="8" height="8" fill="#381a2e"/>
+    <rect x="100" y="98" width="6" height="6" fill="#ffffff"/>
+  </g>
+
+  <!-- Floating Music Note -->
+  <g class="music-note" fill="#ff476f" transform="translate(155, 30)">
+    <rect x="6" y="4" width="2" height="10"/>
+    <rect x="12" y="2" width="2" height="10"/>
+    <rect x="6" y="2" width="8" height="3"/>
+    <ellipse cx="6" cy="14" rx="3" ry="2"/>
+    <ellipse cx="12" cy="12" rx="3" ry="2"/>
+  </g>
+</svg>

@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      /* Retro Pixel Keyframe Animations */
+      @keyframes heartPulse {
+        0%, 100% { transform: scale(1); }
+        15% { transform: scale(1.14); }
+        30% { transform: scale(1.02); }
+        45% { transform: scale(1.18); }
+        70% { transform: scale(1); }
+      }
+      @keyframes floatUp {
+        0% { transform: translateY(0) scale(0.8); opacity: 0; }
+        25% { opacity: 0.9; }
+        80% { opacity: 0.9; }
+        100% { transform: translateY(-28px) scale(1.1); opacity: 0; }
+      }
+      @keyframes blinkLeft {
+        0%, 90%, 100% { opacity: 1; }
+        94%, 96% { opacity: 0; }
+      }
+      @keyframes blinkRight {
+        0%, 85%, 100% { opacity: 1; }
+        89%, 91% { opacity: 0; }
+      }
+      @keyframes bearSway {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      @keyframes sparkleTwinkle {
+        0%, 100% { transform: scale(0.6) rotate(0deg); opacity: 0.3; }
+        50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+      }
+
+      .pulse-heart {
+        transform-origin: 100px 78px;
+        animation: heartPulse 1.8s infinite ease-in-out;
+      }
+      .mini-heart-1 {
+        transform-origin: 100px 60px;
+        animation: floatUp 2.4s infinite ease-in;
+      }
+      .mini-heart-2 {
+        transform-origin: 112px 55px;
+        animation: floatUp 2.8s infinite ease-in 1.2s;
+      }
+      .bear-left {
+        transform-origin: 65px 110px;
+        animation: bearSway 2.5s infinite ease-in-out;
+      }
+      .bear-right {
+        transform-origin: 135px 110px;
+        animation: bearSway 2.5s infinite ease-in-out 0.4s;
+      }
+      .eye-open-l {
+        animation: blinkLeft 3.5s infinite;
+      }
+      .eye-open-r {
+        animation: blinkRight 4s infinite;
+      }
+      .sparkle-1 {
+        transform-origin: 35px 35px;
+        animation: sparkleTwinkle 2s infinite ease-in-out;
+      }
+      .sparkle-2 {
+        transform-origin: 165px 38px;
+        animation: sparkleTwinkle 2.2s infinite ease-in-out 1s;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  
+  
+
+  <!-- Pixel Grid Polka Dots -->
+  <g fill="#ffdbe6">
+    <rect x="20" y="20" width="4" height="4"/>
+    <rect x="80" y="24" width="4" height="4"/>
+    <rect x="140" y="18" width="4" height="4"/>
+    <rect x="180" y="40" width="4" height="4"/>
+    <rect x="24" y="80" width="4" height="4"/>
+    <rect x="176" y="90" width="4" height="4"/>
+  </g>
+
+  <!-- Twinkling Stars -->
+  <g class="sparkle-1" fill="#ffe066">
+    <rect x="33" y="31" width="4" height="12"/>
+    <rect x="29" y="35" width="12" height="4"/>
+    <rect x="33" y="35" width="4" height="4" fill="#ffffff"/>
+  </g>
+  <g class="sparkle-2" fill="#ffe066">
+    <rect x="163" y="34" width="4" height="12"/>
+    <rect x="159" y="38" width="12" height="4"/>
+    <rect x="163" y="38" width="4" height="4" fill="#ffffff"/>
+  </g>
+
+  <!-- Ground Shadow -->
+  <rect x="42" y="124" width="116" height="8" fill="#ffd1de" rx="4"/>
+
+  <!-- ================= LEFT BEAR (WHITE) ================= -->
+  <g class="bear-left">
+    <!-- Ears -->
+    <rect x="48" y="52" width="12" height="12" fill="#381a2e"/>
+    <rect x="52" y="56" width="6" height="6" fill="#ffb8c8"/>
+    <rect x="74" y="52" width="12" height="12" fill="#381a2e"/>
+    <rect x="76" y="56" width="6" height="6" fill="#ffb8c8"/>
+
+    <!-- Head Outline -->
+    <rect x="44" y="60" width="46" height="40" fill="#381a2e"/>
+    <!-- Head Fill -->
+    <rect x="48" y="64" width="38" height="32" fill="#ffffff"/>
+
+    <!-- Cheeks (Blush) -->
+    <rect x="48" y="82" width="8" height="6" fill="#ff9ebb"/>
+    <rect x="78" y="82" width="8" height="6" fill="#ff9ebb"/>
+
+    <!-- Eyes (Animated Blink) -->
+    <g class="eye-open-l" fill="#381a2e">
+      <rect x="58" y="74" width="4" height="6"/>
+      <rect x="72" y="74" width="4" height="6"/>
+      <!-- Eye shine -->
+      <rect x="58" y="74" width="2" height="2" fill="#ffffff"/>
+      <rect x="72" y="74" width="2" height="2" fill="#ffffff"/>
+    </g>
+
+    <!-- Cute Nose & Mouth -->
+    <rect x="65" y="80" width="4" height="3" fill="#381a2e"/>
+    <rect x="66" y="83" width="2" height="2" fill="#381a2e"/>
+
+    <!-- Body -->
+    <rect x="50" y="98" width="34" height="26" fill="#381a2e"/>
+    <rect x="54" y="102" width="26" height="22" fill="#ffffff"/>
+
+    <!-- Little Paws -->
+    <rect x="78" y="96" width="8" height="8" fill="#381a2e"/>
+    <rect x="80" y="98" width="6" height="6" fill="#ffffff"/>
+  </g>
+
+  <!-- ================= RIGHT BEAR (MOCHA) ================= -->
+  <g class="bear-right">
+    <!-- Ears -->
+    <rect x="114" y="52" width="12" height="12" fill="#381a2e"/>
+    <rect x="116" y="56" width="6" height="6" fill="#d49b72"/>
+    <rect x="140" y="52" width="12" height="12" fill="#381a2e"/>
+    <rect x="142" y="56" width="6" height="6" fill="#d49b72"/>
+
+    <!-- Head Outline -->
+    <rect x="110" y="60" width="46" height="40" fill="#381a2e"/>
+    <!-- Head Fill -->
+    <rect x="114" y="64" width="38" height="32" fill="#e8be99"/>
+
+    <!-- Cheeks (Blush) -->
+    <rect x="114" y="82" width="8" height="6" fill="#ff9ebb"/>
+    <rect x="144" y="82" width="8" height="6" fill="#ff9ebb"/>
+
+    <!-- Eyes (Animated Blink) -->
+    <g class="eye-open-r" fill="#381a2e">
+      <rect x="124" y="74" width="4" height="6"/>
+      <rect x="138" y="74" width="4" height="6"/>
+      <rect x="124" y="74" width="2" height="2" fill="#ffffff"/>
+      <rect x="138" y="74" width="2" height="2" fill="#ffffff"/>
+    </g>
+
+    <!-- Nose -->
+    <rect x="131" y="80" width="4" height="3" fill="#381a2e"/>
+    <rect x="132" y="83" width="2" height="2" fill="#381a2e"/>
+
+    <!-- Body -->
+    <rect x="116" y="98" width="34" height="26" fill="#381a2e"/>
+    <rect x="120" y="102" width="26" height="22" fill="#e8be99"/>
+
+    <!-- Paws -->
+    <rect x="114" y="96" width="8" height="8" fill="#381a2e"/>
+    <rect x="114" y="98" width="6" height="6" fill="#e8be99"/>
+  </g>
+
+  <!-- ================= FLOATING MINI HEARTS ================= -->
+  <g class="mini-heart-1">
+    <path fill="#ff6584" d="M96 52 h3 v2 h-3z M101 52 h3 v2 h-3z M94 54 h12 v3 h-12z M96 57 h8 v2 h-8z M98 59 h4 v2 h-4z M99 61 h2 v2 h-2z"/>
+  </g>
+  <g class="mini-heart-2">
+    <path fill="#ff8da3" d="M109 46 h2 v2 h-2z M113 46 h2 v2 h-2z M108 48 h8 v2 h-8z M109 50 h6 v2 h-6z M111 52 h2 v2 h-2z"/>
+  </g>
+
+  <!-- ================= BIG BEATING HEART IN CENTER ================= -->
+  <g class="pulse-heart">
+    <!-- Heart Outline -->
+    <path fill="#381a2e" d="
+      M88 64 h10 v4 h-10z
+      M102 64 h10 v4 h-10z
+      M84 68 h28 v6 h-28z
+      M82 74 h36 v8 h-36z
+      M86 82 h28 v6 h-28z
+      M90 88 h20 v6 h-20z
+      M94 94 h12 v4 h-12z
+      M98 98 h4 v4 h-4z
+    "/>
+    <!-- Heart Vibrant Fill -->
+    <path fill="#ff476f" d="
+      M90 66 h7 v4 h-7z
+      M103 66 h7 v4 h-7z
+      M86 70 h28 v6 h-28z
+      M84 76 h32 v6 h-32z
+      M88 82 h24 v6 h-24z
+      M92 88 h16 v6 h-16z
+      M96 94 h8 v4 h-8z
+      M99 98 h2 v2 h-2z
+    "/>
+    <!-- Heart Shading / Highlight -->
+    <rect x="88" y="70" width="4" height="4" fill="#ffffff"/>
+    <rect x="86" y="74" width="4" height="6" fill="#ffffff"/>
+  </g>
+</svg>

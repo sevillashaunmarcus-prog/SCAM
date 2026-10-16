@@ -1,0 +1,1033 @@
+/* ==============================================================================
+   👾 PIXEL UI COMPONENTS & CONTROLS
+   Tactile 8-bit arcade buttons, cards, progress bars, and media containers.
+   ============================================================================== */
+
+/* Top HUD Bar */
+.game-hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.hud-step-badge {
+    background: var(--bg-card);
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: 4px 10px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    color: var(--pixel-hotpink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+}
+
+.hud-mini-icon {
+    width: 14px;
+    height: 14px;
+    image-rendering: pixelated;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.hud-sound-btn {
+    background: var(--bg-card);
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
+}
+.hud-sound-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--pixel-dark);
+}
+
+/* Progress Hearts Bar */
+.pixel-progress-container {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.pixel-progress-hearts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    user-select: none;
+}
+
+.progress-heart {
+    transition: transform 0.25s ease, filter 0.25s ease;
+    display: inline-block;
+}
+.progress-heart.active {
+    transform: scale(1.25);
+    filter: drop-shadow(0 2px 0 var(--pixel-pink));
+}
+.progress-heart.completed {
+    opacity: 0.9;
+}
+.progress-heart.pending {
+    opacity: 0.35;
+    filter: grayscale(1);
+}
+
+/* Main Pixel Card - Fluid on all screens */
+.pixel-card {
+    --card-pad: clamp(14px, 4vw, 22px);
+    width: 100%;
+    background: var(--bg-card);
+    border: var(--pixel-border-width) solid var(--pixel-dark);
+    box-shadow: 
+        3px 3px 0 var(--pixel-shadow),
+        6px 6px 0 var(--pixel-dark);
+    position: relative;
+    overflow: hidden;
+    padding: var(--card-pad);
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* Card Header Window Strip - Perfectly aligned on any screen width */
+.card-window-bar {
+    width: calc(100% + (2 * var(--card-pad)));
+    background: var(--pixel-pink);
+    border-bottom: 3px solid var(--pixel-dark);
+    margin: calc(-1 * var(--card-pad)) calc(-1 * var(--card-pad)) 14px calc(-1 * var(--card-pad));
+    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.card-window-title {
+    font-family: var(--font-heading);
+    font-size: clamp(8px, 2.2vw, 10px);
+    color: var(--text-white);
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 0 var(--pixel-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-window-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+.card-dot {
+    width: 9px;
+    height: 9px;
+    border: 1.5px solid var(--pixel-dark);
+}
+.dot-yellow { background: var(--pixel-yellow); }
+.dot-mint { background: var(--pixel-mint); }
+.dot-hotpink { background: var(--pixel-hotpink); }
+
+/* Typography inside card - Fluid scaling */
+.pixel-title {
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 3.8vw, 17px);
+    line-height: 1.5;
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.pixel-subtitle {
+    font-family: var(--font-pixel);
+    font-size: clamp(14px, 3.2vw, 16px);
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    word-break: break-word;
+}
+
+/* ==============================================================================
+   🖼️ REUSABLE IMAGE / GIF CONTAINER - Fluid & Responsive
+   Handles GIF, PNG, JPG, WEBP.
+   Shows a lovely pixel art placeholder if image is missing!
+   ============================================================================== */
+.pixel-media-box {
+    width: 100%;
+    max-width: min(320px, 92vw);
+    margin: 0 auto clamp(8px, 2.5vw, 16px) auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(100px, 18vh, 150px);
+    max-height: clamp(130px, 24vh, 200px);
+    overflow: visible;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pixel-media-box img {
+    width: 100%;
+    height: 100%;
+    max-width: 290px;
+    max-height: 205px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Fallback / Placeholder state - hidden by default, shown only on image error */
+.media-placeholder-view {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(8px, 2vw, 12px) 8px;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff5f8,
+        #fff5f8 10px,
+        #ffecf2 10px,
+        #ffecf2 20px
+    );
+    border: 2px dashed var(--pixel-pink);
+    box-sizing: border-box;
+}
+
+.placeholder-icon {
+    font-size: clamp(26px, 6vw, 34px);
+    margin-bottom: 4px;
+    animation: gentleBounce 1.6s infinite ease-in-out;
+}
+
+.placeholder-label {
+    font-family: var(--font-heading);
+    font-size: clamp(8px, 2.2vw, 10px);
+    color: var(--pixel-hotpink);
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+    word-break: break-word;
+}
+
+.placeholder-path {
+    font-family: var(--font-retro);
+    font-size: clamp(12px, 2.6vw, 14px);
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--pixel-pink-light);
+    padding: 2px 6px;
+    border-radius: 2px;
+    max-width: 95%;
+    word-break: break-all;
+}
+
+/* ==============================================================================
+   🎮 RETRO PIXEL BUTTONS - Touch friendly & adaptive
+   ============================================================================== */
+.pixel-btn {
+    font-family: var(--font-heading);
+    font-size: clamp(10px, 2.6vw, 12px);
+    letter-spacing: 0.5px;
+    padding: clamp(10px, 2.5vw, 13px) clamp(14px, 3.5vw, 18px);
+    border: 3px solid var(--pixel-dark);
+    box-shadow: 
+        inset -3px -3px 0 0 rgba(0,0,0,0.22),
+        inset 3px 3px 0 0 rgba(255,255,255,0.6),
+        3px 3px 0 0 var(--pixel-dark);
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    min-height: 44px; /* Accessible touch target */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    text-decoration: none;
+    background: var(--bg-card);
+    color: var(--pixel-dark);
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+/* Hover only for pointer/mouse devices */
+@media (hover: hover) {
+    .pixel-btn:hover {
+        filter: brightness(1.05);
+    }
+}
+
+.pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        inset -2px -2px 0 0 rgba(0,0,0,0.35),
+        inset 2px 2px 0 0 rgba(255,255,255,0.2),
+        1px 1px 0 0 var(--pixel-dark);
+}
+
+/* Big YES & NO Buttons for Landing */
+.landing-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 14px;
+}
+
+.landing-buttons-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 16px);
+    width: 100%;
+    min-height: 80px;
+    position: relative;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.pixel-btn-yes {
+    background: var(--pixel-pink);
+    color: var(--text-white);
+    font-size: clamp(13px, 3.4vw, 16px);
+    padding: clamp(12px, 3vw, 16px) clamp(18px, 5vw, 28px);
+    text-shadow: 1px 1px 0 var(--pixel-dark);
+    animation: gentleHeartbeat 2.2s infinite ease-in-out;
+    z-index: 5;
+    max-width: 90vw;
+    transform-origin: center center;
+}
+@media (hover: hover) {
+    .pixel-btn-yes:hover {
+        background: var(--pixel-pink-hover);
+    }
+}
+
+.pixel-btn-no {
+    background: #e2e8f0;
+    color: #475569;
+    font-size: clamp(11px, 2.8vw, 13px);
+    padding: clamp(10px, 2.5vw, 12px) clamp(14px, 4vw, 20px);
+    z-index: 4;
+    max-width: 90vw;
+    transform-origin: center center;
+}
+@media (hover: hover) {
+    .pixel-btn-no:hover {
+        background: #cbd5e1;
+    }
+}
+
+/* Speech bubble for funny NO messages */
+.no-quote-bubble {
+    background: #ffffff;
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 3px 3px 0 var(--pixel-dark);
+    padding: 8px 14px;
+    font-family: var(--font-pixel);
+    font-size: clamp(13px, 3vw, 15px);
+    font-weight: 700;
+    color: var(--pixel-hotpink);
+    text-align: center;
+    position: relative;
+    animation: bubblePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 94%;
+    word-break: break-word;
+}
+.no-quote-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--pixel-dark);
+}
+
+/* Navigation Buttons Row */
+.nav-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(14px, 3.5vw, 22px);
+    gap: clamp(8px, 2.5vw, 14px);
+    box-sizing: border-box;
+}
+
+.pixel-btn-nav {
+    flex: 1;
+    font-size: clamp(10px, 2.4vw, 11px);
+    padding: clamp(10px, 2.6vw, 13px) clamp(10px, 2.8vw, 14px);
+    min-height: 44px;
+}
+.pixel-btn-back {
+    background: #fff;
+    color: var(--text-muted);
+    max-width: 120px;
+    min-width: 85px;
+}
+.pixel-btn-next {
+    background: var(--pixel-pink);
+    color: #fff;
+    text-shadow: 1px 1px 0 var(--pixel-dark);
+}
+.pixel-btn-finish {
+    background: var(--pixel-hotpink);
+    color: #fff;
+    font-size: clamp(11px, 2.8vw, 13px);
+    padding: clamp(12px, 3vw, 14px) clamp(14px, 4vw, 20px);
+    text-shadow: 1px 1px 0 var(--pixel-dark);
+    animation: gentleHeartbeat 2s infinite ease-in-out;
+}
+
+/* ==============================================================================
+   📅 RETRO DATE & TIME PICKER (PAGE 2)
+   ============================================================================== */
+.pixel-input-group {
+    width: 100%;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: border-box;
+}
+
+.pixel-input-label {
+    font-family: var(--font-heading);
+    font-size: clamp(9px, 2.2vw, 10px);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pixel-input {
+    width: 100%;
+    font-family: var(--font-pixel);
+    /* 16px font-size minimum avoids automatic zoom on iOS Safari */
+    font-size: 16px;
+    padding: clamp(10px, 2.8vw, 13px) clamp(10px, 3vw, 14px);
+    background: #ffffff;
+    border: 3px solid var(--pixel-dark);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.1), 3px 3px 0 var(--pixel-dark);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    box-sizing: border-box;
+    min-height: 44px;
+}
+.pixel-input:focus {
+    background: #fff9fb;
+    border-color: var(--pixel-hotpink);
+}
+
+/* Quick Date Chips */
+.quick-date-chips {
+    display: flex;
+    gap: clamp(4px, 1.8vw, 8px);
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.quick-chip {
+    background: var(--bg-card-alt);
+    border: 2px solid var(--pixel-dark);
+    padding: clamp(4px, 1.5vw, 6px) clamp(6px, 2vw, 10px);
+    font-family: var(--font-pixel);
+    font-size: clamp(11px, 2.5vw, 13px);
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    box-shadow: 1px 1px 0 var(--pixel-dark);
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    touch-action: manipulation;
+}
+@media (hover: hover) {
+    .quick-chip:hover {
+        background: var(--pixel-pink-light);
+        color: var(--text-primary);
+    }
+}
+
+/* ==============================================================================
+   🍽️ SELECTABLE CARDS (PAGES 3 & 4)
+   ============================================================================== */
+.pixel-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(8px, 2.2vw, 12px);
+    width: 100%;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+.selectable-pixel-card {
+    background: #ffffff;
+    border: 3px solid var(--pixel-dark);
+    box-shadow: 3px 3px 0 var(--pixel-dark);
+    padding: clamp(10px, 2.5vw, 14px) clamp(6px, 2vw, 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    min-height: 68px;
+    box-sizing: border-box;
+}
+
+@media (hover: hover) {
+    .selectable-pixel-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 0 var(--pixel-dark);
+        background: #fffafb;
+    }
+}
+
+.selectable-pixel-card.selected {
+    background: #ffe3ec;
+    border-color: var(--pixel-hotpink);
+    box-shadow: 
+        inset 0 0 0 2px var(--pixel-hotpink),
+        3px 3px 0 var(--pixel-dark);
+    transform: translateY(-1px);
+}
+
+.card-emoji-icon {
+    font-size: clamp(24px, 5.5vw, 32px);
+    margin-bottom: 4px;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.selectable-pixel-card.selected .card-emoji-icon {
+    transform: scale(1.18);
+}
+
+.card-item-title {
+    font-family: var(--font-heading);
+    font-size: clamp(8.5px, 2.2vw, 10px);
+    color: var(--text-primary);
+    margin-bottom: 3px;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.card-item-desc {
+    font-family: var(--font-pixel);
+    font-size: clamp(11px, 2.6vw, 13px);
+    color: var(--text-muted);
+    line-height: 1.25;
+}
+
+.selected-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--pixel-hotpink);
+    color: #fff;
+    border: 2px solid var(--pixel-dark);
+    font-size: 10px;
+    padding: 1px 4px;
+    font-family: var(--font-heading);
+    box-shadow: 1px 1px 0 var(--pixel-dark);
+}
+
+/* Other Custom Food Input & Wide Card */
+.selectable-pixel-card.card-other {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 8px 14px;
+}
+
+.selectable-pixel-card.card-other .card-emoji-icon {
+    font-size: clamp(20px, 4.5vw, 24px);
+    margin-bottom: 0;
+}
+
+.selectable-pixel-card.card-other .card-item-title {
+    margin-bottom: 0;
+}
+
+.other-food-container {
+    width: 100%;
+    margin-top: 10px;
+    animation: fadeIn 0.25s ease;
+    box-sizing: border-box;
+}
+
+/* ==============================================================================
+   👕 OUTFIT COLOR SELECTOR (PAGE 5)
+   ============================================================================== */
+.color-picker-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+.outfit-character-preview {
+    background: var(--bg-card-alt);
+    border: 3px solid var(--pixel-dark);
+    box-shadow: 3px 3px 0 var(--pixel-dark);
+    padding: clamp(10px, 3vw, 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: min(260px, 80vw);
+    box-sizing: border-box;
+}
+
+.pixel-outfit-svg {
+    width: clamp(70px, 18vw, 90px);
+    height: clamp(70px, 18vw, 90px);
+    filter: drop-shadow(2px 2px 0 var(--pixel-dark));
+    transition: fill 0.3s ease;
+}
+
+.outfit-color-name-badge {
+    margin-top: 8px;
+    font-family: var(--font-heading);
+    font-size: clamp(9px, 2.4vw, 11px);
+    color: var(--text-primary);
+    background: #fff;
+    border: 2px solid var(--pixel-dark);
+    padding: 3px 10px;
+    box-shadow: 1px 1px 0 var(--pixel-dark);
+    word-break: break-word;
+    text-align: center;
+}
+
+.color-swatches-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(6px, 2vw, 10px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.color-swatch-btn {
+    border: 3px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    height: clamp(38px, 9vw, 48px);
+    min-height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.1s ease;
+    touch-action: manipulation;
+    box-sizing: border-box;
+}
+@media (hover: hover) {
+    .color-swatch-btn:hover {
+        transform: scale(1.05);
+    }
+}
+.color-swatch-btn.selected {
+    transform: scale(1.08);
+    box-shadow: 3px 3px 0 var(--pixel-hotpink), 5px 5px 0 var(--pixel-dark);
+}
+.color-swatch-btn.selected::after {
+    content: '✓';
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Other Custom Outfit Swatch & Input Container */
+.color-swatch-btn.color-swatch-other {
+    background: linear-gradient(135deg, #ffd1dc, #e0c3fc, #c3e2fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.color-swatch-other .swatch-other-text {
+    font-family: var(--font-heading);
+    font-size: clamp(7.5px, 2vw, 9px);
+    color: var(--pixel-dark);
+    letter-spacing: -0.2px;
+    pointer-events: none;
+    line-height: 1;
+    text-align: center;
+}
+
+.color-swatch-other.selected .swatch-other-text {
+    display: none;
+}
+
+.other-outfit-container {
+    width: 100%;
+    margin-top: 10px;
+    animation: fadeIn 0.25s ease;
+    box-sizing: border-box;
+}
+
+
+/* ==============================================================================
+   🚗 PICKUP LOCATION (PAGE 6)
+   ============================================================================== */
+.pickup-cute-helper {
+    background: #fff5e6;
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    font-size: clamp(12px, 2.8vw, 14px);
+    color: #8c5b00;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+/* ==============================================================================
+   🏆 FINAL DATE SUMMARY PAGE
+   ============================================================================== */
+.victory-ribbon {
+    background: var(--pixel-hotpink);
+    border: 3px solid var(--pixel-dark);
+    box-shadow: 3px 3px 0 var(--pixel-dark);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(10px, 2.8vw, 13px);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 0 var(--pixel-dark);
+    animation: gentleBounce 2s infinite ease-in-out;
+    word-break: break-word;
+}
+
+.summary-details-card {
+    background: #ffffff;
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: clamp(10px, 3vw, 14px);
+    margin-bottom: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.summary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed var(--pixel-pink-light);
+    padding-bottom: 6px;
+}
+
+.plan-official-box .summary-card-header {
+    border-bottom: 2px solid var(--pixel-hotpink);
+}
+
+.summary-section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(9px, 2.4vw, 11px);
+    color: var(--pixel-pink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    word-break: break-word;
+    margin: 0;
+}
+
+.pixel-btn-mini-copy {
+    font-family: var(--font-heading);
+    font-size: clamp(7.5px, 2vw, 9px);
+    background: #ffffff;
+    color: var(--pixel-dark);
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: 3px 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.1s ease, background 0.12s ease;
+    white-space: nowrap;
+}
+
+.pixel-btn-mini-copy:hover {
+    background: #fff0f5;
+    transform: translateY(-1px);
+}
+
+.pixel-btn-mini-copy:active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 0 var(--pixel-dark);
+}
+
+.plan-official-box {
+    background: #fff2f6;
+    border: 3px solid var(--pixel-hotpink);
+    box-shadow: 3px 3px 0 var(--pixel-dark);
+    padding: clamp(10px, 3vw, 14px);
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.plan-official-box .summary-section-title {
+    color: var(--pixel-hotpink);
+}
+
+.summary-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: clamp(13px, 3vw, 15px);
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0;
+}
+
+.summary-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px 8px;
+    line-height: 1.35;
+    flex-wrap: wrap;
+    word-break: break-word;
+}
+
+.summary-icon {
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.summary-label {
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.summary-value {
+    color: var(--pixel-hotpink);
+    font-weight: 600;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.sweet-love-note {
+    background: #fff;
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    padding: 12px 14px;
+    font-size: clamp(13px, 3vw, 15px);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.final-action-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.btn-copy-her {
+    flex: 1 1 170px;
+    background: #ffe3ec;
+    color: var(--pixel-dark);
+}
+@media (hover: hover) {
+    .btn-copy-her:hover {
+        background: #ffd1dc;
+    }
+}
+
+.btn-copy-my, .btn-copy-plan {
+    flex: 1 1 170px;
+    background: var(--pixel-mint);
+    color: var(--pixel-dark);
+}
+@media (hover: hover) {
+    .btn-copy-my:hover, .btn-copy-plan:hover {
+        background: #84e4be;
+    }
+}
+
+.btn-restart {
+    flex: 1 1 100%;
+    background: #ffffff;
+    color: var(--text-muted);
+}
+
+/* Toast message for Copying */
+.pixel-toast {
+    position: fixed;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pixel-dark);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: clamp(9px, 2.5vw, 11px);
+    border: 2px solid #fff;
+    box-shadow: 3px 3px 0 var(--pixel-pink);
+    padding: 10px 18px;
+    z-index: 1000;
+    animation: toastPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 90vw;
+    text-align: center;
+    word-break: break-word;
+}
+
+@keyframes toastPop {
+    from { transform: translate(-50%, 20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* ==============================================================================
+   📱 ADAPTIVE MEDIA QUERIES (COMPACT MOBILE, TABLETS, LANDSCAPE)
+   ============================================================================== */
+
+/* 1. Extra Small Mobile Phones (width <= 360px: iPhone SE 1st gen, compact Androids) */
+@media (max-width: 360px) {
+    .pixel-card {
+        padding: 12px 10px;
+    }
+    .card-window-bar {
+        padding: 5px 10px;
+    }
+    .pixel-cards-grid {
+        gap: 6px;
+    }
+    .selectable-pixel-card {
+        padding: 8px 4px;
+        min-height: 60px;
+    }
+    .card-emoji-icon {
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+    .quick-date-chips {
+        gap: 4px;
+    }
+    .quick-chip {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    .nav-buttons-row {
+        gap: 6px;
+    }
+    .pixel-btn-back {
+        min-width: 75px;
+        max-width: 95px;
+    }
+    .final-action-buttons {
+        flex-direction: column;
+    }
+    .btn-copy-her, .btn-copy-my, .btn-copy-plan, .btn-restart {
+        width: 100%;
+    }
+}
+
+/* 2. Tablets & Wide Screens (width >= 560px) */
+@media (min-width: 560px) {
+    .pixel-cards-grid.food-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 3. Landscape Mode on Mobile Phones (height <= 520px) */
+@media (max-height: 520px) and (orientation: landscape) {
+    .pixel-media-box {
+        max-height: 105px;
+        min-height: 80px;
+        margin-bottom: 8px;
+    }
+    .placeholder-icon {
+        font-size: 22px;
+    }
+    .card-window-bar {
+        margin-bottom: 8px;
+        padding: 4px 10px;
+    }
+    .pixel-title {
+        margin-bottom: 6px;
+    }
+    .pixel-subtitle {
+        margin-bottom: 8px;
+    }
+    .landing-buttons-row {
+        min-height: 60px;
+    }
+    .outfit-character-preview {
+        padding: 8px;
+    }
+    .pixel-outfit-svg {
+        width: 55px;
+        height: 55px;
+    }
+    .outfit-color-name-badge {
+        margin-top: 4px;
+        font-size: 9px;
+    }
+    .selectable-pixel-card {
+        padding: 6px 4px;
+        min-height: 54px;
+    }
+    .card-emoji-icon {
+        font-size: 20px;
+    }
+}

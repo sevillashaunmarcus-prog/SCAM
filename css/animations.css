@@ -1,0 +1,149 @@
+/* ==============================================================================
+   ✨ PIXEL ANIMATIONS & RETRO MOTION
+   Smooth, lightweight keyframes for 8-bit charm without mobile lag.
+   ============================================================================== */
+
+/* Ambient Floating Background Layer */
+.pixel-ambient-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-pixel-symbol {
+    position: absolute;
+    user-select: none;
+    animation: floatUpward linear infinite;
+}
+
+@keyframes floatUpward {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.6;
+    }
+    85% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg) scale(1.1);
+        opacity: 0;
+    }
+}
+
+/* Particle Burst for clicks */
+.pixel-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 16px;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes particleFade {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.2);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--tx) * 1.3), calc(-50% + var(--ty) * 1.3 + 20px)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Confetti Shower for Victory */
+.pixel-confetti {
+    position: fixed;
+    pointer-events: none;
+    z-index: 998;
+    user-select: none;
+    animation: confettiFall cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(var(--end-x) - 50%), 105vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Button & UI Keyframes */
+@keyframes gentleHeartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.04); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.05); }
+    70% { transform: scale(1); }
+}
+
+@keyframes gentleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes bubblePop {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Page Steps Container & Transitions */
+.page-step {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.18, 0.89, 0.32, 1.15);
+}
+
+.page-step.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pixel Screen Wipe Overlay */
+.pixel-curtain-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--pixel-pink);
+    z-index: 1000;
+    pointer-events: none;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.22s steps(4);
+}
+
+.pixel-curtain-transition.wipe-in {
+    transform: scaleY(1);
+    transform-origin: bottom;
+}
+
+.pixel-curtain-transition.wipe-out {
+    transform: scaleY(0);
+    transform-origin: top;
+}
